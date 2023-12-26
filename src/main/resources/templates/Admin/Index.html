@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #3684cc;
+        }
+        .nav-pills .nav-link {
+            color: #2464a9;
+        }
+        .nav-pills .nav-link.active {
+            color: #ffffff;
+            background-color: rgba(255, 0, 0, 0.97);
+        }
+        .form-control {
+            margin-bottom: 10px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+        .operator {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/homePage" class="nav-link active" aria-current="page">Главная</a></li>
+        <li class="nav-item"><a href="/Admin/Index" class="nav-link">Страница админа</a></li>
+    </ul>
+</header>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Номер</th>
+        <th>Логин</th>
+        <th>Роль</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.idUser}"></td>
+        <td th:text="${user.username}"></td>
+        <td>
+            <div th:each="role : ${user.getRoles()}">
+                 <span th:text="${role.name()}"/>
+            </div>
+        </td>
+        <td>
+            <a class="btn btn-light" th:href="@{/Admin/Update/{id}(id=${user.idUser})}">🔄</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

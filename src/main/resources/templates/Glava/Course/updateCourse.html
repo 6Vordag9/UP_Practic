@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #3684cc;
+        }
+        .nav-pills .nav-link {
+            color: #2464a9;
+        }
+        .nav-pills .nav-link.active {
+            color: #ffffff;
+            background-color: rgba(255, 0, 0, 0.97);
+        }
+        .form-control {
+            margin-bottom: 10px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+        .operator {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/homePage" class="nav-link active" aria-current="page">Главная</a></li>
+        <li class="nav-item"><a href="/Glava/Course/index" class="nav-link ">Курсы</a></li>
+        <li class="nav-item"><a href="/Glava/Class/index" class="nav-link">Классы</a></li>
+        <li class="nav-item"><a href="/Glava/Grade/index" class="nav-link">Оценки</a></li>
+        <li class="nav-item"><a href="/Glava/Schedule/index" class="nav-link">Расписание</a></li>
+        <li class="nav-item"><a href="/Glava/Speciality/index" class="nav-link">Специальности</a></li>
+        <li class="nav-item"><a href="/Glava/Subject/index" class="nav-link">Предметы</a></li>
+        <li class="nav-item"><a href="/Glava/ClassSubject/index" class="nav-link">Классы для предметов</a></li>
+        <li class="nav-item"><a href="/Glava/scheduleSubject/index" class="nav-link">Расписание предметов</a></li>
+    </ul>
+</header>
+<form th:method="post" th:action="@{/Glava/Course/updateCourse/{id}(id=${course.getIdCourse()})}" th:object="${course}">
+    <input placeholder="Название модели:" class="form-control" type="text" th:field="*{nameCourse}"/>
+    <br/>
+    <button type="submit"  class="operator btn btn-info">Сохранить</button>
+</form>
+</body>
+</html>
